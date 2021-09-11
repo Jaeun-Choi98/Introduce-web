@@ -6,11 +6,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class TestController {
+public class HelloController {
 
-    @GetMapping("/test")
-    public String test(@RequestParam(name="name", required = false, defaultValue = "world") String name, Model model){
-        model.addAttribute("name", name);
-        return "test";
+    @GetMapping("/hello")
+    public String hello(@RequestParam(name="name", required = false, defaultValue = "world") String name, Model model){
+        //model.addAttribute("name", name);
+        return "hello";
     }
 }
