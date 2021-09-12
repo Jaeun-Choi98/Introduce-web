@@ -1,7 +1,7 @@
 body {
   font-family: "Hanna", sans-serif;
   height: 100vh;
-  background-image: url("background.jpg");
+  background-image: url("/img/background.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -35,7 +35,7 @@ body {
   margin-top: 5%;
 }
 
-.enter a:link {
+.enter a {
   color: crimson;
   text-decoration: underline;
 }
