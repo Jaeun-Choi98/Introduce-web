@@ -8,20 +8,24 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <link rel="stylesheet" th:href="@{/css/common.css}" />
+    <link rel="stylesheet" th:href="@{/css/home.css}" />
     <style>
         @import url(//fonts.googleapis.com/earlyaccess/hanna.css);
 
         .container {
             display: flex;
-            height: 1300px;
+            height: 100%;
+            width: 100%;
             margin-left: 75px;
             margin-right: 75px;
             font-size: 16px;
         }
 
         .content {
-            margin-left: 220px;
-            width: 100%;
+            margin-left: 290px;
+            margin-top: 5%;
+            padding-left: 10%;
+            padding-right: 5%;
             text-size-adjust: 100%;
         }
     </style>
@@ -31,9 +35,47 @@
     <main class="container">
         <section th:replace="fragment/common :: common-body"></section>
         <section class="content">
-            <h2>
-                Main Home입니다.
-            </h2>
+            <div class="greeding">
+                <h2>
+                    Hello! My name is Jaeun Choi.
+                </h2>
+            </div>
+            <div class="breif-intro">
+                <div>
+                    <h3>
+                        Introduction
+                    </h3>
+                </div>
+                <div>
+                    <h4>
+                        안녕하세요. 좋은 개발자가 되고 싶은 최재운입니다.
+                        서두르지 않고 조금씩 확실하게 배워가는 것에 대한 중요함을 알기에
+                        가능한 매일 천천히 모르는 것에 대해 공부해나가는 것을 목표로 합니다.
+                    </h4>
+                </div>
+            </div>
+            <div class="skills-container">
+                Skills
+                <div class="backend-item">
+                    <div class="backend-a">
+                        Backend
+                    </div>
+                    <div class="backend-b">
+                        Java<br>
+                        Spring Boot, Spring MVC<br>
+                        IntelliJ<br>
+                        Git<br>
+                    </div>
+                </div>
+                <div class="frontend-item">
+                    <div class="frontend-a">
+                        Frontend
+                    </div>
+                    <div class="frontend-b">
+                        HTML, CSS, JS
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 </body>

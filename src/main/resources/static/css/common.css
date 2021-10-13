@@ -3,14 +3,21 @@ body {
 }
 
 .about {
+  /* height: 100vh;
+  background-image: url("../img/background_cat.jpg");
+  background-repeat: no-repeat;
+  background-size: cover; */
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   position: fixed;
   min-width: 220px;
-  height: 900px;
+  height: 100%;
   padding-bottom: 130px;
+  padding-right: 75px;
+  border-right: solid 2.5px black;
   line-height: 18px;
   text-size-adjust: 100%;
 }

@@ -1,0 +1,49 @@
+.greeding h2 {
+  text-align: left;
+  font-size: 3rem;
+  margin-top: 5%;
+}
+
+.breif-intro {
+  margin-top: 10%;
+}
+
+.breif-intro h3 {
+  text-align: left;
+  font-size: 2rem;
+}
+
+.breif-intro h4 {
+  text-align: left;
+  font-size: 1.5rem;
+  margin-top: 2%;
+}
+
+.skills-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15%;
+  font-size: 2rem;
+}
+
+.backend-item {
+  display: flex;
+  flex-direction: row;
+  margin-top: 4%;
+  font-size: 1.5rem;
+}
+
+.backend-a {
+  padding-right: 25%;
+}
+
+.frontend-item {
+  display: flex;
+  flex-direction: row;
+  margin-top: 2%;
+  font-size: 1.5rem;
+}
+
+.frontend-a {
+  padding-right: 24%;
+}
