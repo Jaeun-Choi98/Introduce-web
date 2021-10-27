@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <link rel="stylesheet" th:href="@{/css/common.css}" />
+    <link rel="stylesheet" th:href="@{/css/study-home.css}" />
     <style>
         @import url(//fonts.googleapis.com/earlyaccess/hanna.css);
 
@@ -17,13 +18,17 @@
             width: 100%;
             margin-left: 75px;
             margin-right: 75px;
+            margin-bottom: 75px;
             font-size: 16px;
         }
 
         .content {
+            width: 1000px;
+            font-size: 20px;
             margin-left: 290px;
             margin-top: 5%;
-            padding-left: 5%;
+            padding-left: 10%;
+            padding-right: 5%;
             text-size-adjust: 100%;
         }
     </style>
@@ -34,8 +39,40 @@
         <section th:replace="fragment/common :: common-body"></section>
         <section class="content">
             <h2>
-                Study home입니다.
+                Study Board
             </h2>
+            <table class="table caption-top">
+                <caption>총 건수 : <span th:text="${#lists.size(boards)}"></span></caption>
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Topic</th>
+                        <th scope="col"> </th>
+                        <th scope="col">Content</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="board,iterStat : ${boards}">
+                        <th scope="row" th:text="${iterStat.count} ?: 'Null'">null</th>
+                        <td th:text="${board.topic} ?: 'Empty'">topic
+                        </td>
+                        <td>
+                            <a class="link-dark show" th:href="@{/look-home(id=${board.id})}">Look</a>
+                        </td>
+                        <td>
+                            <a class="link-dark" th:href="@{/write-home(id=${board.id})}">
+                                <p id="revsion">Revison</p>
+                            </a>
+                            <p th:text="(${#strings.length(board.content) > 20}) ? (${#strings.substring(board.content,0,20)} + '...' ?: 'Empty')
+                            : (${board.content} ?: 'Empty')">content</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <a th:href="@{/write-home}"><button type="button" class="btn btn-light">Write</button></a>
+                <a><button type="button" class="btn btn-dark">Delete</button></a>
+            </div>
         </section>
     </main>
 </body>

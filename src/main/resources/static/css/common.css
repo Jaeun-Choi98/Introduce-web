@@ -67,3 +67,7 @@ body {
   display: list-item;
   text-align: center;
 }
+
+.list-group-item-action:hover {
+  background-color: gray;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>jaeun</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/common.css}" />
+    <link rel="stylesheet" th:href="@{/css/study-home.css}" />
+    <style>
+        @import url(//fonts.googleapis.com/earlyaccess/hanna.css);
+
+        .container {
+            display: flex;
+            height: 100%;
+            width: 100%;
+            margin-left: 75px;
+            margin-right: 75px;
+            margin-bottom: 75px;
+            font-size: 16px;
+        }
+
+        .content {
+            width: 1000px;
+            font-size: 20px;
+            margin-left: 290px;
+            margin-top: 5%;
+            padding-left: 10%;
+            padding-right: 5%;
+            text-size-adjust: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="container">
+        <section th:replace="fragment/common :: common-body"></section>
+        <section class="content">
+            <h2 th:text="${board.topic}">
+                Writing Board
+            </h2>
+            <div th:text="${board.content}">
+                Test
+            </div>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <a th:href="@{/study-home}"><button type="button" class="btn btn-dark">Back</button></a>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>

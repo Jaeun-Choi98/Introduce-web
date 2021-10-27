@@ -1,0 +1,22 @@
+.content h2 {
+  margin-bottom: 15%;
+}
+
+.link-dark {
+  text-decoration-line: none;
+}
+
+.show.link-dark:hover {
+  background-color: gray;
+}
+
+#revsion:hover {
+  opacity: 1;
+  background-color: white;
+}
+
+#revsion {
+  width: 500px;
+  position: absolute;
+  opacity: 0;
+}
