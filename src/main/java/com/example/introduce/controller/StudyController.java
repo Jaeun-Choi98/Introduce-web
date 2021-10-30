@@ -3,14 +3,15 @@ package com.example.introduce.controller;
 import com.example.introduce.model.Board;
 import com.example.introduce.repository.BoardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.List;
 
 @Controller()
 public class StudyController {
@@ -19,8 +20,14 @@ public class StudyController {
     BoardRepository boardRepository;
 
     @GetMapping("/study-home")
-    public String studyHome(Model model){
-        List<Board> boards = boardRepository.findAll();
+    public String studyHome(Model model, @PageableDefault(size = 5) Pageable pageable,
+                            @RequestParam(required = false, defaultValue = "") String searchText){
+        //Page<Board> boards = boardRepository.findAll(pageable);
+        Page<Board> boards = boardRepository.findByTopicContaining(searchText,pageable);
+        int startPage = Math.max(1,boards.getPageable().getPageNumber()-2);
+        int endPage = Math.min(boards.getTotalPages(),boards.getPageable().getPageNumber()+2);
+        model.addAttribute("startPage",startPage);
+        model.addAttribute("endPage",endPage);
         model.addAttribute("boards",boards);
         return "/study/study-home";
     }
@@ -49,4 +56,5 @@ public class StudyController {
         model.addAttribute("board",board);
         return "/study/look-home";
     }
+
 }

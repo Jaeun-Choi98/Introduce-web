@@ -1,5 +1,5 @@
 .content h2 {
-  margin-bottom: 15%;
+  margin-bottom: 10%;
 }
 
 .link-dark {
@@ -19,4 +19,8 @@
   width: 500px;
   position: absolute;
   opacity: 0;
+}
+
+.page-link {
+  color: black;
 }

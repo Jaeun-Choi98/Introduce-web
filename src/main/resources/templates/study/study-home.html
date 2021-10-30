@@ -41,8 +41,18 @@
             <h2>
                 Study Board
             </h2>
+            <form class="row g-2 justify-content-end" th:action="@{/study-home}" method="get">
+                <div class="col-auto">
+                    <label for="searchText" class="visually-hidden">Search</label>
+                    <input type="text" class="form-control" id="searchText" name="searchText"
+                        th:value="${param.searchText}">
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-dark mb-3">Search</button>
+                </div>
+            </form>
             <table class="table caption-top">
-                <caption>총 건수 : <span th:text="${#lists.size(boards)}"></span></caption>
+                <caption>총 건수 : <span th:text="${boards.totalElements}"></span></caption>
                 <thead class="table-dark">
                     <tr>
                         <th scope="col">#</th>
@@ -57,21 +67,38 @@
                         <td th:text="${board.topic} ?: 'Empty'">topic
                         </td>
                         <td>
-                            <a class="link-dark show" th:href="@{/look-home(id=${board.id})}">Look</a>
+                            <a class="link-dark show" th:href="@{/look-home(id=${board.id})}">Read</a>
                         </td>
                         <td>
                             <a class="link-dark" th:href="@{/write-home(id=${board.id})}">
                                 <p id="revsion">Revison</p>
                             </a>
-                            <p th:text="(${#strings.length(board.content) > 20}) ? (${#strings.substring(board.content,0,20)} + '...' ?: 'Empty')
+                            <p th:text="(${#strings.length(board.content) > 10}) ? (${#strings.substring(board.content,0,10)} + '...' ?: 'Empty')
                             : (${board.content} ?: 'Empty')">content</p>
                         </td>
                     </tr>
                 </tbody>
             </table>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item" th:classappend="${1 == boards.pageable.pageNumber + 1} ? 'disabled'">
+                        <a class="page-link"
+                            th:href="@{/study-home(page=${boards.pageable.pageNumber - 1},searchText=${param.searchText})}">Previous</a>
+                    </li>
+                    <li class="page-item" th:classappend="${i == boards.pageable.pageNumber + 1} ? 'disabled'"
+                        th:each="i : ${#numbers.sequence(startPage,endPage)}">
+                        <a class="page-link" th:text="${i}"
+                            th:href="@{/study-home(page=${i - 1},searchText=${param.searchText})}"></a>
+                    </li>
+                    <li class="page-item"
+                        th:classappend="${boards.totalPages == boards.pageable.pageNumber + 1} ? 'disabled'">
+                        <a class="page-link"
+                            th:href="@{/study-home(page=${boards.pageable.pageNumber + 1},searchText=${param.searchText})}">Next</a>
+                    </li>
+                </ul>
+            </nav>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <a th:href="@{/write-home}"><button type="button" class="btn btn-light">Write</button></a>
-                <a><button type="button" class="btn btn-dark">Delete</button></a>
+                <a th:href="@{/write-home}"><button type="button" class="btn btn-dark">Write</button></a>
             </div>
         </section>
     </main>

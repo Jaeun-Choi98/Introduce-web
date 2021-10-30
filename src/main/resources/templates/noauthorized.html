@@ -31,6 +31,10 @@
             padding-right: 5%;
             text-size-adjust: 100%;
         }
+
+        #per {
+            margin-top: 20%;
+        }
     </style>
 </head>
 
@@ -38,12 +42,23 @@
     <main class="container">
         <section th:replace="fragment/common :: common-body"></section>
         <section class="content">
-            <h2 th:text="${board.topic}">
-                Writing Board
+            <h2 id="per">
+                You don't have permission.
             </h2>
-            <div th:utext="${board.content}">
-                Test
+            <div th:if="${param.error}">
+                Invalid username and password.
             </div>
+            <form th:action="@{/noauthorized}" method="post">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" id="username" name="username" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="paasword" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" name="password">
+                </div>
+                <button type="submit" class="btn btn-dark">Sign in</button>
+            </form>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                 <a th:href="@{/study-home}"><button type="button" class="btn btn-dark">Back</button></a>
             </div>
