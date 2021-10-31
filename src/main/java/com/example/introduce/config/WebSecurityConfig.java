@@ -23,7 +23,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                    .antMatchers("/home","/study-home","/look-home","/css/**","/img/**").permitAll()
+                    .antMatchers("/home","/study-home","/look-home","/css/**","/img/**", "/api/**").permitAll()
                     .anyRequest().authenticated()
                     .and()
                 .formLogin()
@@ -32,6 +32,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .and()
                 .logout()
                     .permitAll();
+
+        //
+        http.csrf().disable();
     }
 
     @Autowired
@@ -51,6 +54,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public PasswordEncoder passwordEncoder(){
+        System.err.println(new BCryptPasswordEncoder().encode("1111"));
         return new BCryptPasswordEncoder();
     }
 }

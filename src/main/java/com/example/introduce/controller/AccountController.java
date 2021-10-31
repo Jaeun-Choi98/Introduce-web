@@ -10,6 +10,6 @@ public class AccountController {
 
     @GetMapping("/noauthorized")
     public String noAuthorized(){
-        return "/noauthorized";
+        return "noauthorized";
     }
 }

@@ -29,7 +29,7 @@ public class StudyController {
         model.addAttribute("startPage",startPage);
         model.addAttribute("endPage",endPage);
         model.addAttribute("boards",boards);
-        return "/study/study-home";
+        return "study/study-home";
     }
 
     @GetMapping("/write-home")
@@ -41,7 +41,7 @@ public class StudyController {
             Board board = boardRepository.findById(id).orElse(null);
             model.addAttribute("board",board);
         }
-        return "/study/write-home";
+        return "study/write-home";
     }
 
     @PostMapping("/write-home")
@@ -54,7 +54,7 @@ public class StudyController {
     public String look(Model model, @RequestParam(required = false) Long id){
         Board board = boardRepository.findById(id).orElse(null);
         model.addAttribute("board",board);
-        return "/study/look-home";
+        return "study/look-home";
     }
 
 }

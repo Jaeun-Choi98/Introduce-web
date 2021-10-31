@@ -11,7 +11,7 @@ public class BoardApiController {
     @Autowired
     BoardRepository boardRepository;
 
-    @DeleteMapping("api/delete/{id}")
+    @DeleteMapping("/api/delete/{id}")
     public void delete(@PathVariable Long id){
         boardRepository.deleteById(id);
     }
