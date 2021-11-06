@@ -27,6 +27,11 @@ body {
   height: 200px;
 }
 
+.img-github {
+  width: 100px;
+  height: 100px;
+}
+
 #my-name {
   margin-top: 25px;
   font-size: 27px;

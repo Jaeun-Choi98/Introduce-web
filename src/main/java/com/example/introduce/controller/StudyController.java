@@ -5,6 +5,7 @@ import com.example.introduce.repository.BoardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,7 +21,7 @@ public class StudyController {
     BoardRepository boardRepository;
 
     @GetMapping("/study-home")
-    public String studyHome(Model model, @PageableDefault(size = 5) Pageable pageable,
+    public String studyHome(Model model, @PageableDefault(size = 5,sort="id",direction = Sort.Direction.DESC) Pageable pageable,
                             @RequestParam(required = false, defaultValue = "") String searchText){
         //Page<Board> boards = boardRepository.findAll(pageable);
         Page<Board> boards = boardRepository.findByTopicContaining(searchText,pageable);
